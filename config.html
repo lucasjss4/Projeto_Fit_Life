@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fit Life</title>
+
+    <link rel="stylesheet" href="./styles/style.css">
+
+    <link rel="stylesheet" href="./styles/menu.css">
+
+    <link rel="stylesheet" href="./styles/config.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="menu">
+
+            <div class="buttonMenu">
+
+                <p id="textMenu">FD</p>
+
+                <div id="buttonMenu"></div>
+
+            </div>
+
+            <a href="index.html">
+                <img src="./icones/mansion.png" alt="">
+                <p>Início</p>
+            </a>
+
+            <a href="">
+                <img src="./icones/config.png" alt="">
+                <p>Config</p>
+            </a>
+
+            <a href="calorias.html">
+                <img src="./icones/calories.png" alt="">
+                <p>Calorias</p>
+            </a>
+
+            <a href="agua.html">
+                <img src="./icones/bottle.png" alt="">
+                <p>Água</p>
+            </a>
+
+            <a href="sono.html">
+                <img src="./icones/sleeping.png" alt="">
+                <p>Sono</p>
+            </a>
+
+            <a href="treino.html">
+                <img src="./icones/weightlifter.png" alt="">
+                <p>Treinos</p>
+            </a>
+
+            <a href="https://twitter.com.br">
+                <img src="./icones/twitter.png" alt="">
+                <p>Twitter</p>
+            </a>
+
+            <a href="https://br.linkedin.com.br">
+                <img src="./icones/linkedin.png" alt="">
+                <p>Linkedin</p>
+            </a>
+
+        </div>
+
+        <div class="content">
+
+            <header>
+                <p>Bem vindo(a), <span id="nome"></span></p>
+                <p id="data">Data de Hoje: <span id="date"></span></p>
+            </header>
+
+
+            <div class="config">
+
+                <p>Configurações da Conta</p>
+
+                <form action="" id="form">
+
+                    <div class="info">
+                        <label for="">
+                            Nome:
+                        </label>
+                        <input type="text" id="nameInput">
+                    </div>
+
+                    <div class="info">
+                        <label for="">
+                            Email:
+                        </label>
+                        <input type="email" id="email">
+                    </div>
+
+                    <div class="info">
+                        <label for="">
+                            Telefone:
+                        </label>
+                        <input type="text" id="telefone">
+                    </div>
+
+                    <div class="info">
+                        <label for="">
+                            Senha:
+                        </label>
+                        <input type="password" id="password">
+                    </div>
+
+                    <div class="button">
+                        <button type="submit">Atualizar Dados</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <div class="photo">
+
+                <img src="./icones/perfil.png" alt="">
+
+                <p>Clique para Alterar a foto</p>
+
+            </div>
+
+            <div class="areaDisp">
+
+                <div class="titleDisp">
+                    <p>Sincronização de dispositivos</p>
+                </div>
+
+
+                <div class="dispositivos">
+                    <div class="dispositivo">
+                        <p>Apple Watch</p>
+                        <img src="./icones/applewatch.png" alt="">
+                        <button type="submit">Sincronizar</button>
+                    </div>
+
+                    <div class="dispositivo">
+                        <p>Zeep Xiaomi</p>
+                        <img src="./icones/xiaomiwatch.png" alt="">
+                        <button type="submit">Sincronizar</button>
+                    </div>
+
+                    <div class="dispositivo">
+                        <p>Galaxy Watch</p>
+                        <img src="./icones/sansungwatch.png" alt="">
+                        <button type="submit">Sincronizar</button>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    </div>
+
+</body>
+
+<script>
+
+    const menu = document.querySelector('.menu');
+    const buttonMenu = document.getElementById('buttonMenu');
+    const textMenu = document.getElementById('textMenu');
+    const conteudo = document.querySelector('.content');
+
+    const nome = document.getElementById('nome');
+
+    let dia = new Date().getDate();
+    let mes = new Date().getMonth();
+    let ano = new Date().getFullYear();
+
+    const data = document.getElementById('date');
+
+    data.textContent = dia + '/' + mes + '/' + ano
+
+
+    const acron = document.querySelectorAll('a');
+
+    let isOpen = false;
+
+    buttonMenu.addEventListener('click', () => {
+
+        isOpen = !isOpen;
+
+        if (isOpen) {
+            menu.classList.add('menuOpen');
+            textMenu.textContent = ':Fitness Dashboard';
+            textMenu.classList.add('bigTextMenu');
+            buttonMenu.classList.add('bigButtonMenu');
+            conteudo.classList.add('menuIsOpen');
+
+            acron.forEach(item => {
+                item.classList.add('menuHover');
+            })
+
+        } else {
+            menu.classList.remove('menuOpen');
+            textMenu.textContent = 'FD';
+            textMenu.classList.remove('bigTextMenu');
+            buttonMenu.classList.remove('bigButtonMenu');
+            conteudo.classList.remove('menuIsOpen');
+
+            acron.forEach(item => {
+                item.classList.remove('menuHover');
+            })
+        }
+
+    });
+
+    const form = document.getElementById('form');
+
+    const inputName = document.getElementById('nameInput');
+    const email = document.getElementById('email');
+    const tel = document.getElementById('telefone');
+    const senha = document.getElementById('password');
+
+    form.addEventListener('submit', (event) => {
+
+        localStorage.setItem('nome', inputName.value.trim());
+        localStorage.setItem('telefone', tel.value.trim());
+        localStorage.setItem('email', email.value.trim());
+        localStorage.setItem('senha', senha.value.trim());
+
+    })
+
+
+    let nomeUser = localStorage.getItem('nome');
+
+    if (nomeUser) {
+        nome.textContent = nomeUser;
+        inputName.setAttribute('value', nomeUser);
+    } else {
+        nome.textContent = '[Nome do Usuário]'
+        inputName.setAttribute('value', 'Seu Nome');
+    }
+
+    let emailUser = localStorage.getItem('email');
+
+    if (emailUser) {
+        email.setAttribute('value', emailUser);
+    } else {
+        email.setAttribute('value', 'seuemail@exemplo.com');
+    }
+
+    let telUser = localStorage.getItem('telefone');
+
+    if (telUser) {
+        tel.setAttribute('value', telUser);
+    } else {
+        tel.setAttribute('value', '(00) 00000-0000');
+    }
+
+    let senhaUser = localStorage.getItem('senha');
+
+    if (senhaUser) {
+        senha.setAttribute('value', senhaUser);
+    } else {
+        senha.setAttribute('value', '12345678');
+    }
+
+</script>
+
+
+</html>

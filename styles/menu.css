@@ -1,0 +1,87 @@
+.menu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 50px;
+    background-color: #282c40;
+    overflow: hidden;
+    height: 100vh;
+    box-shadow: 0 10px 10px #6f92bf;
+    transition: all 0.5s ease;
+}
+
+.menu a{
+    width: 90%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    margin-top: 10px;
+    border-bottom: 2px dashed #6f92bf;
+}
+
+.menu a img{
+    width: 45px;
+    margin-right: 20px;
+    filter: grayscale(1);
+    margin-bottom: 10px;
+}
+
+.menuOpen {
+    width: 150px;
+}
+
+.menuHover:hover{
+    transform: scale(1.1);
+    background-color: #6f92bf;
+}
+
+.buttonMenu{
+    display: flex;
+    width: 95%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.bigButtonMenu{
+    width: 35px !important;
+    height: 35px !important;
+}
+
+.bigTextMenu{
+    font-size: 18px !important;
+}
+
+.buttonMenu #buttonMenu{
+    background-image: url('../icones/menu.png');
+    width: 25px;
+    height: 25px;
+    background-size: cover;
+    background-position: 0;
+    filter: invert(100%);
+    cursor: pointer;
+}
+
+.buttonMenu p{
+    font-size: 14px;
+}
+
+@media (max-width:900px) {
+    .menu{
+        left: 7px;      
+        width: 50px;
+    }
+
+    .menuOpen {
+        width: 150px;
+    }
+    
+}

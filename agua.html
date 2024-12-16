@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fit Life</title>
+
+    <link rel="stylesheet" href="./styles/style.css">
+
+    <link rel="stylesheet" href="./styles/menu.css">
+
+    <link rel="stylesheet" href="./styles/agua.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="menu">
+
+            <div class="buttonMenu">
+
+                <p id="textMenu">FD</p>
+
+                <div id="buttonMenu"></div>
+
+            </div>
+
+            <a href="index.html">
+                <img src="./icones/mansion.png" alt="">
+                <p>Início</p>
+            </a>
+
+            <a href="config.html">
+                <img src="./icones/config.png" alt="">
+                <p>Config</p>
+            </a>
+
+            <a href="calorias.html">
+                <img src="./icones/calories.png" alt="">
+                <p>Calorias</p>
+            </a>
+
+            <a href="agua.html">
+                <img src="./icones/bottle.png" alt="">
+                <p>Água</p>
+            </a>
+
+            <a href="sono.html">
+                <img src="./icones/sleeping.png" alt="">
+                <p>Sono</p>
+            </a>
+
+            <a href="treino.html">
+                <img src="./icones/weightlifter.png" alt="">
+                <p>Treinos</p>
+            </a>
+
+            <a href="https://twitter.com.br">
+                <img src="./icones/twitter.png" alt="">
+                <p>Twitter</p>
+            </a>
+
+            <a href="https://br.linkedin.com.br">
+                <img src="./icones/linkedin.png" alt="">
+                <p>Linkedin</p>
+            </a>
+
+        </div>
+
+        <div class="content">
+
+            <header>
+                <p>Resumo de <span id="nome"></span></p>
+            </header>
+
+            <div class="dicas">
+                <div class="dica">
+                    <div class="img">
+                        <img src="./icones/garrafaagua.png" alt="">
+                    </div>
+                    <div class="titleDica">
+                        <p>Água consumida</p>
+                    </div>
+                    <div class="desc">
+                        <p>2L</p>
+                    </div>
+                </div>
+                <div class="dica">
+                    <div class="img">
+                        <img src="./icones/copoagua.png" alt="">
+                    </div>
+                    <div class="titleDica">
+                        <p>Copos consumidos</p>
+                    </div>
+                    <div class="desc">
+                        <p>8 Copos</p>
+                    </div>
+                </div>
+                <div class="dica">
+                    <div class="img">
+                        <img src="./icones/metaagua.png" alt="">
+                    </div>
+                    <div class="titleDica">
+                        <p>Meta de Hidratação</p>
+                    </div>
+                    <div class="desc">
+                        <p>3L</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards">
+                <div class="card">
+                    <div class="front">
+                        <img src="./icones/hidratacao.png" alt="">
+                        <p>Total de Hidratação</p>
+                        <p id="infoGrande">14L na última semana</p>
+                    </div>
+                    <div class="backface">
+                        <p>Média Diária de Hidratacao</p>
+                        <p id="infoGrande">2L</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</body>
+
+<script>
+
+    const menu = document.querySelector('.menu');
+    const buttonMenu = document.getElementById('buttonMenu');
+    const textMenu = document.getElementById('textMenu');
+    const conteudo = document.querySelector('.content');
+
+    const nome = document.getElementById('nome');
+
+    const acron = document.querySelectorAll('a');
+
+    let isOpen = false;
+
+    buttonMenu.addEventListener('click', () => {
+
+        isOpen = !isOpen;
+
+        if (isOpen) {
+            menu.classList.add('menuOpen');
+            textMenu.textContent = ':Fitness Dashboard';
+            textMenu.classList.add('bigTextMenu');
+            buttonMenu.classList.add('bigButtonMenu');
+            conteudo.classList.add('menuIsOpen');
+
+            acron.forEach(item => {
+                item.classList.add('menuHover');
+            })
+
+        } else {
+            menu.classList.remove('menuOpen');
+            textMenu.textContent = 'FD';
+            textMenu.classList.remove('bigTextMenu');
+            buttonMenu.classList.remove('bigButtonMenu');
+            conteudo.classList.remove('menuIsOpen');
+
+            acron.forEach(item => {
+                item.classList.remove('menuHover');
+            })
+        }
+
+    });
+
+    let nomePage = localStorage.getItem('nomePage');
+
+    localStorage.setItem('nomePage', 'Hidratação')
+
+    nome.textContent = nomePage;
+
+
+</script>
+
+
+</html>

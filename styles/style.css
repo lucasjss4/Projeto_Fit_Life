@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Tahoma';
+}
+
+body{
+    background-color: #282c40;
+    overflow-x: hidden;
+}
+
+.container{
+    display: flex;
+}
+
+.content{
+    display: flex;
+    margin-left: 50px;
+    transition: all 0.5s ease;
+    width: 100%;
+    flex-direction: column;
+}
+
+.menuIsOpen{
+    margin-left: 150px;
+}
+
+header{
+    margin-left: 10px;
+    margin-top: 10px;
+    background-color: #6f92bf;
+    width: 100%;
+    margin-right: 10px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header p{
+    font-size: 26px;
+    color: #282c40;
+}
+
+@media (max-width:900px) {
+    
+    header{
+        margin: 0;
+    }
+
+}
